@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" >
+	<meta name="format-detection" content="telphone=no, email=no"/>
+	<meta content="telephone=no" name="format-detection" />
+	<title>积分抽奖</title>
+	<link rel="stylesheet" href="anniversary/css/index.css?v=1.2">
+	<script src="anniversary/js/jquery.min.js"></script>
+</head>
+<script>
+	;
+	(function(){
+		var _width = window.innerWidth,
+			$html = document.querySelector('html');
+		if(_width > 540){
+			$html.style.fontSize = '33.75px';
+		} else {
+			$html.style.fontSize = _width * .05 + 'px';
+		}
+	})()
+</script>
+<body>
+	<div class="integral">
+		<h2 class="integraltitle">
+			<img src="anniversary/images/integraltitle.png" />
+		</h2>
+		<div class="armbandit">
+			<img src="anniversary/images/armbanditbg.png" />
+			<span class="balance">剩余次数：<span class="balancenum">2</span></span>
+			<div class="flipdiv dark">
+				<div class="flipdivcontent">
+					<div class="flnum num_01"></div>
+					<div class="flnum num_02"></div>
+					<div class="flnum num_03"></div>
+				</div>
+			</div>
+			<button class="startbtn getup"></button>
+		</div>
+		<div class="giftlist">
+			<div class="giftlistbox">
+				<div class="imgbox"></div>
+			</div>
+		</div>
+		<div class="winning">
+			<img src="anniversary/images/winning.png" />
+		</div>
+		<div class="clear"></div>
+		<div class="footer">
+			<div class="footertext">
+				<h2>
+					<img src="anniversary/images/activityname.png" />
+				</h2>
+				<div class="activ-top">
+					1. 30积分即可兑换一次抽奖机会;<br/>
+					2. 优惠券奖品将放置于相应手机账户内;<br/>
+					3. 实物奖品将由客服人员确认后核发;
+				</div>
+				<div class="activ-bottom">
+					如有疑问：<br/>
+					1. 可拨打客服热线4006-500-599;<br/>
+					2. 加入聚能充车友群qq：497746809，还可<br/>
+					领取充电优惠券;<br/>
+					3.添加小聚客服微信咨询→
+					<span class="littleju">
+						<img src="anniversary/images/littleju.png" />
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<div class="maskbg"></div>
+	<!-- 弹框 -->
+	<!-- 未中奖 -->
+	<div class="nogift jump">
+		<img src="anniversary/images/nogiftbg.png" />
+		<span class="oncemore">
+			<img src="anniversary/images/oncemorebg.png" />
+		</span>
+		<span class="closejump"></span>
+	</div>
+	<!-- 2元优惠券 -->
+	<div class="twoycoupon jump havegift">
+		<div class="giftcontent">
+			<div class="gifttext">
+				<span class="topblack"></span>
+				<p class="text1">获得一张2元充电优惠券</p>
+				<div class="giftimg">
+					<img src="anniversary/images/gifttwobg.png" />
+				</div>
+				<p class="text2">优惠券已放入账户：<span id="teleone" class="telephone">{$mobile}</span></p>
+				<p class="text2">快去充电吧～</p>
+			</div>
+			<span class="closejump"></span>
+		</div>
+	</div>
+	<!-- 200元代金券 -->
+	<div class="y200coupon jump havegift">
+		<div class="giftcontent">
+			<div class="gifttext">
+				<span class="topblack"></span>
+				<p class="text1">获得一张200元汽车保养代金券</p>
+				<div class="giftimg">
+					<img src="anniversary/images/gift200bg.png" />
+				</div>
+				<p class="text2">代金券兑换码为：<span class="telephone">{$mobile}</span></p>
+				<span class="seedetails" data-id="1">
+					点击查看使用详情
+				</span>
+			</div>
+			<span class="closejump"></span>
+		</div>
+	</div>
+	<!-- 30元代金券 -->
+	<div class="jpycoupon jump havegift">
+		<div class="giftcontent">
+			<div class="gifttext">
+				<span class="topblack"></span>
+				<p class="text1">获得一张30元礼品卡</p>
+				<div class="giftimg">
+					<img src="anniversary/images/giftjpbg.png" />
+				</div>
+				<p class="text2">兑换编号为：<span class="jpnumber"></span></p>
+				<p class="text2">兑换密码为：<span class="jppassword"></span></p>
+				<span class="seedetails" data-id="2">
+					点击查看使用详情
+				</span>
+			</div>
+			<span class="closejump"></span>
+		</div>
+	</div>
+	<!-- 亲子摄影 -->
+	<div class="soncoupon jump havegift">
+		<div class="giftcontent">
+			<div class="gifttext">
+				<span class="topblack"></span>
+				<p class="text1">获得一次免费私享夹全套亲子摄影</p>
+				<div class="giftimg">
+					<img src="anniversary/images/soncouponbg.png" />
+				</div>
+				<span class="seedetails" data-id="3">
+					点击查看使用详情
+				</span>
+			</div>
+			<span class="closejump"></span>
+		</div>
+	</div>
+	<!-- 送水 -->
+	<div class="watercoupon jump havegift">
+		<div class="giftcontent">
+			<div class="gifttext">
+				<span class="topblack"></span>
+				<p class="text1">获得一瓶万能泡沫清洗剂+<br/>
+				全年12次免费添加夏季玻璃水服务</p>
+				<div class="giftimg">
+					<img src="anniversary/images/watergiftbg.png" />
+				</div>
+				<span class="seedetails" data-id="4">
+					点击查看使用详情
+				</span>
+			</div>
+			<span class="closejump"></span>
+		</div>
+	</div>
+	<!-- 车载 -->
+	<div class="carcoupon jump havegift"></div>
+	<!-- 地锁 -->
+	<div class="discoupon jump havegift"></div>
+	<!-- 次数太少 -->
+	<div class="somall jump">
+		<img src="anniversary/images/somallmoney.png" />
+		<span class="closesomall">
+			<img src="anniversary/images/ikownbg.png" />
+		</span>
+	</div>
+	<!-- 积分太少 -->
+	<div class="norecord jump">
+		<img src="anniversary/images/norecordbg.png" />
+		<span class="closesomall">
+			<img src="anniversary/images/ikownrecord.png" />
+		</span>
+	</div>
+	<!-- 抽奖记录 -->
+	<div class="record">
+		<div class="haverecord">
+			<ul class="recordlist"></ul>
+			<span class="closerecord">
+				<img src="anniversary/images/closebg.png" />
+			</span>
+		</div>
+	</div>
+	<!-- 详情页面 -->
+	<div class="bonusdetails">
+		<div class="bonusdbanner">
+			<img src="anniversary/images/gift200bg.png" />
+		</div>
+		<div class="bonusdcontent">
+			<h2 class="bonusname">价值868元的免费私享夹全套亲子摄影</h2>
+			<p class="validity">有效期至：2017-06-05</p>
+			<p class="conversion">兑换编号：<span>1520123989502</span></p>
+			<p class="conversion">兑换密码：<span>23412506</span></p>
+			<div class="bonusdbottom">
+				<h2 class="bottname">奖品说明</h2>
+				<div class="botttexts">
+					礼品卡由合作单位 将·品 提供：<br/>
+					1.礼品卡为电子卡券形式，兑换截止至2017年<br/>
+					6月30日；<br/>
+					2.兑换方法：关注将品公众号，<br/>
+					“我的将品”-“我的订单”-“礼品<br/>
+					册充值”。
+					<span class="xiaojubg">
+						<img src="anniversary/images/xiaojubg.png" />
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ajax">
+		<img src="anniversary/images/ajaxbg.gif" />
+	</div>
+</body>
+<script src="anniversary/js/easing.js"></script>
+<script src="anniversary/js/index.js?v=3.5"></script>
+</html>
